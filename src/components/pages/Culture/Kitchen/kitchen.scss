@@ -1,0 +1,87 @@
+#kitchen {
+    .kitchen {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 40px;
+      &--block1 {
+        margin: 40px 0;
+        width: 100%;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 70px;
+        h1 {
+          font-family: "Abril Fatface", serif;
+          font-weight: 400;
+          font-size: clamp(18px, 5vw, 60px);
+          line-height: 100%;
+          letter-spacing: 0%;
+          text-align: center;
+          vertical-align: middle;
+          color: rgba(0, 74, 96, 1);
+          margin-left: 10px;
+        }
+        p {
+          font-family: "Frank Ruhl Libre", serif;
+          font-weight: 500;
+          font-size: clamp(10px, 2vw, 20px);
+          line-height: clamp(12px, 3vw, 35px);
+          letter-spacing: 0.2px;
+          color: rgba(0, 0, 0, 1);
+          text-align: center;
+        }
+      }
+      &--block2 {
+        width: 100%;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        &__text {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 60%;
+          img {
+            width: 50%;
+            height: 100%;
+            object-fit: contain;
+          }
+          p {
+            width: 40%;
+            font-weight: 400;
+            font-size: clamp(18px, 2.5vw, 20px);
+            line-height: 30px;
+            letter-spacing: 0%;
+            color: rgba(36, 36, 36, 1);
+            span {
+              margin: 50px 0;
+              font-weight: 700;
+              font-size: 24px;
+              line-height: 100%;
+              letter-spacing: 0%;
+              vertical-align: middle;
+              color: rgba(36, 36, 36, 1);
+            }
+          }
+          @media (max-width: 600px) {
+            display: flex;
+            flex-direction: column;
+            p {
+              font-size: 22px;
+              width: 100%;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap");
+  

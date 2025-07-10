@@ -1,0 +1,48 @@
+#profile {
+  width: clamp(180px, 4vw, 290px);
+  height: clamp(177px, 70vw, 971px);
+  .profileBGG {
+    background: rgba(0, 0, 0, 0.375);
+    height: 100%;
+    width: 100%;
+  }
+  .profile {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70vh;
+    &--blocks {
+      padding-top: 200px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      &__block {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        a {
+          color: white;
+        }
+        // img{
+        //     // background: white;
+        // }
+      }
+    }
+    &--log {
+      display: flex;
+      padding-top: 290px;
+      h1 {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+        vertical-align: middle;
+        font-size: clamp(5px, 4vw, 18px);
+      }
+    }
+  }
+}

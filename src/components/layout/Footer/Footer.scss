@@ -1,0 +1,108 @@
+#footer {
+  width: 100%;
+  background: rgb(188, 188, 240);
+
+  .footer {
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    font-family: "Frank Ruhl Libre", serif;
+    h3 {
+      font-weight: 700;
+      font-size: clamp(18px, 5vw, 24px);
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: rgba(0, 74, 96, 1);
+    }
+    h1 {
+      font-weight: 700;
+      font-size: clamp(18px, 5vw, 24px);
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: rgba(0, 74, 96, 1);
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: rgba(36, 36, 36, 1);
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    &--block1 {
+      margin-right: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: clamp(50px, 10vw, 170px);
+      &__icons {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        a {
+          font-size: 25px;
+        }
+      }
+      @media (max-width: 600px) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &--block2 {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      &__text {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+      @media (max-width: 600px) {
+        display: flex;
+      }
+    }
+    &--block3 {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      &__text {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+      @media (max-width: 600px) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &--block4 {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      &__text {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+      @media (max-width: 600px) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&display=swap");

@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Frank+Ruhl+Libre:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sawarabi+Gothic&display=swap");
+
+#welcome {
+  min-height: clamp(400px, 75vw, 900px);
+  position: relative;
+
+  .welcome {
+    &--nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: clamp(14px, 3vw, 30px);
+
+      h1 {
+        margin-top: clamp(42px, 7vw, 91px);
+        font-family: 'Abril Fatface', cursive;
+        font-weight: 400;
+        font-size: clamp(12px, 4.8vw, 70px);
+        line-height: clamp(20px, 7vw, 90px);
+        text-align: center;
+        color: #ffffff;
+      }
+
+      &__inpb {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: clamp(160px, 55vw, 700px);
+        height: clamp(23px, 8vw, 56px);
+
+        &--input {
+          display: flex;
+          align-items: center;
+          gap: clamp(5px, 3vw, 20px);
+          width: clamp(190px, 73vw, 688px);
+          height: clamp(23px, 8vw, 56px);
+          background: white;
+          border: none;
+          border-radius: 25px;
+
+          input {
+            border: none;
+            height: 100%;
+            width: 60%;
+            font-size: clamp(8px, 3vw, 24px);
+            color: #5a5a5a;
+          }
+
+          a {
+            padding-left: 10px;
+            font-size: clamp(14px, 4vw, 30px);
+            color: #5a5a5a;
+          }
+        }
+
+        h3 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: clamp(12px, 3vw, 32px);
+          border-radius: 50%;
+          width: clamp(23px, 7vw, 56px);
+          height: clamp(23px, 7vw, 56px);
+          border: none;
+          background: #004a60;
+        }
+      }
+
+      p {
+        font-family: 'Frank Ruhl Libre', serif;
+        font-weight: 500;
+        font-size: clamp(10px, 1.9vw, 24px);
+        line-height: 140%;
+        letter-spacing: 0.4px;
+        text-align: center;
+        color: #ffffff;
+        width: 70%;
+      }
+    }
+  }
+
+  .position {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.581);
+    height: clamp(150px, 20vw, 288px);
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 10px;
+
+    h1 {
+      font-family: 'Abril Fatface', cursive;
+      font-weight: 400;
+      font-size: clamp(16px, 5vw, 64px);
+      line-height: 100%;
+      color: #ffffff;
+    }
+
+    p {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-weight: 500;
+      font-size: clamp(12px, 2vw, 24px);
+      line-height: 120%;
+      letter-spacing: 5%;
+      color: #242424;
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  #welcome .position {
+    flex-direction: column;
+  }
+}

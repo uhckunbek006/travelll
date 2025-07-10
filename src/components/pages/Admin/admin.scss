@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Frank+Ruhl+Libre:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sawarabi+Gothic&display=swap");
+#admin {
+  min-height: 758px;
+  .adminbg {
+    background: rgba(0, 0, 0, 0.375);
+    height: 758px;
+    width: 100%;
+  }
+  .admin {
+    padding-top: 50px;
+    &--block {
+      width: clamp(300px, 55vw, 600px);
+      height: clamp(360px, 60vw, 666px);
+      background: white;
+      border-radius: 10px;
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(5px, 3vw, 20px);
+      h1 {
+        margin-top: clamp(15px, 6vw, 40px);
+        font-family: Frank Ruhl Libre;
+        font-weight: 700;
+        font-size: clamp(13px, 4.5vw, 48px);
+        line-height: 100%;
+        letter-spacing: 3%;
+        color: #004a60;
+        text-align: center;
+      }
+      h2 {
+        margin-left: 25px;
+        font-family: Montserrat;
+        font-weight: 600;
+        font-size: clamp(8px, 2vw, 20px);
+        line-height: 100%;
+        letter-spacing: 3%;
+        color: #242424;
+      }
+      &__startinp {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: clamp(5px, 3vw, 15px);
+        input {
+          padding-left: clamp(5px, 3vw, 15px);
+          width: clamp(255px, 50vw, 556px);
+          height: clamp(15px, 6.5vw, 43px);
+          border-radius: 10px;
+          border: 1px solid #27313882;
+          font-family: Montserrat;
+          font-weight: 400;
+          font-size: clamp(5px, 2.5vw, 17px);
+          line-height: 100%;
+          color: #27313882;
+        }
+      }
+      &__centerinp {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-left: clamp(19px, 2vw, 20px);
+        gap: clamp(5px, 1vw, 15px);
+
+        h5 {
+          font-family: Montserrat;
+          font-weight: 400;
+          font-size: clamp(5px, 3vw, 14px);
+          line-height: 100%;
+          color: #273138;
+          padding-bottom: 5px;
+        }
+        input {
+          width: clamp(113px, 24vw, 260px);
+          height: clamp(12px, 5.5vw, 43px);
+          border-radius: 10px;
+          border: 1px solid #27313882;
+          padding-left: 15px;
+        }
+      }
+      &__me {
+        display: flex;
+        align-items: center;
+        gap: clamp(2px, 3vw, 10px);
+        padding-left: clamp(19px, 2vw, 20px);
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: clamp(17px, 8vw, 40px);
+          height: clamp(10px, 4vw, 21px);
+
+          input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            height: 15px;
+            background: none;
+            border-radius: 34px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 0.4s;
+            border: 2px solid #868889;
+            min-height: 3vh;
+            width: 38px;
+            &::before {
+              position: absolute;
+              content: "";
+              height: clamp(5px, 2vw, 15px);
+              width: clamp(5px, 2vw, 15px);
+              left: -1px;
+              bottom: -1px;
+              border: 3px solid #868889;
+              border-radius: 50%;
+              transition: 0.4s;
+            }
+          }
+          input:checked + .slider {
+            background-color: #686a6b;
+          }
+
+          input:checked + .slider::before {
+            transform: translateX(16.5px);
+          }
+        }
+        h3 {
+          font-family: Montserrat;
+          font-weight: 500;
+          font-size: clamp(10px, 2vw, 25px);
+          line-height: 100%;
+          letter-spacing: 3%;
+          color: #868889;
+        }
+      }
+      button {
+        margin-left: 20px;
+        border-radius: 10px;
+        background: #004a60;
+        border: none;
+        // width: clamp(250px, 40vw, 550px);
+        width: clamp(255px, 50vw, 556px);
+        height: clamp(12px, 7vw, 60px);
+        font-family: Frank Ruhl Libre;
+        font-weight: 700;
+        font-size: clamp(8px, 2vw, 20px);
+        line-height: 100%;
+        color: white;
+      }
+      h4 {
+        margin-left: 20px;
+        font-family: Montserrat;
+        font-weight: 300;
+        font-size: clamp(8px, 2vw, 20px);
+        line-height: 100%;
+        letter-spacing: 3%;
+        color: #868889;
+        span {
+          color: #407ec7;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #admin {
+    margin-left: -20px;
+    .adminbg {
+      height: auto;
+    }
+
+    .admin {
+      padding-top: 30px;
+      padding-right: 5px;
+
+      &--block {
+        padding-bottom: 10px;
+        width: 108%;
+        height: auto;
+        padding-left: 1px;
+        border-radius: 8px;
+        gap: 15px;
+
+        h1 {
+          font-size: 24px;
+          margin-top: 20px;
+        }
+
+        h2 {
+          font-size: 14px;
+          margin-left: 10px;
+        }
+
+        &__startinp {
+          gap: 10px;
+
+          input {
+            width: 95%;
+            height: 38px;
+            font-size: 14px;
+            padding-left: 10px;
+          }
+        }
+
+        &__centerinp {
+          padding-left: 10px;
+          gap: 10px;
+
+          input {
+            width: 95%;
+            height: 38px;
+            font-size: 13px;
+          }
+
+          h5 {
+            font-size: 12px;
+          }
+
+          grid-template-columns: 1fr 1fr; // эки тилке кала берет
+        }
+
+        &__me {
+          gap: 8px;
+          padding-left: 10px;
+
+          .switch {
+            width: 35px;
+            height: 18px;
+
+            .slider::before {
+              width: 11px;
+              height: 11px;
+            }
+          }
+
+          h3 {
+            font-size: 13px;
+          }
+        }
+
+        button {
+          width: 95%;
+          margin-left: 10px;
+          height: 50px;
+          font-size: 16px;
+        }
+
+        h4 {
+          margin-left: 10px;
+          font-size: 13px;
+
+          span {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Frank+Ruhl+Libre:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sawarabi+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Frank+Ruhl+Libre:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sawarabi+Gothic&display=swap");
+#gallery {
+  padding: 40px 0;
+  .gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    &--block {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      flex-direction: column;
+      width: clamp(156px, 32vw, 350px);
+      height: clamp(179px, 36vw, 390px);
+      border-radius: 10px;
+      -webkit-box-shadow: 1px 1px 16px 3px rgba(34, 60, 80, 0.32);
+      -moz-box-shadow: 1px 1px 16px 3px rgba(34, 60, 80, 0.32);
+      box-shadow: 1px 1px 16px 3px rgba(34, 60, 80, 0.32);
+      img {
+        border-radius: 10px 10px 0 0;
+        width: 100%;
+        height: 70%;
+      }
+      h1 {
+        padding-left: 10px;
+        font-family: Montserrat;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+      }
+      &__rate {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 10px;
+        h3 {
+          font-family: Inter;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 140%;
+          letter-spacing: 0%;
+          vertical-align: middle;
+        }
+        h4 {
+          font-family: Inter;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 140%;
+          letter-spacing: 0%;
+          vertical-align: middle;
+        }
+      }
+      &__cout {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 10px;
+        a {
+          font-size: 14px;
+        }
+        h2 {
+          font-family: Arial;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 17.53px;
+          letter-spacing: 0%;
+          vertical-align: middle;
+        }
+      }
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        border-radius: 50%;
+        font-size: 48px;
+      }
+    }
+  }
+}
