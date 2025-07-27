@@ -8,6 +8,10 @@ const RooteContext = ({ children }) => {
   const [attraction, setAttraction] = useState([]);
   const [culture, setCulture] = useState([]);
   const [games, setGames] = useState([]);
+  const [clothes, setClothes] = useState([]);
+  const [hand, setHand] = useState([]);
+  const [instruments, setInstruments] = useState([]);
+  // const [games, setGames] = useState([]);
   const [language, setLanguage] = useState("en");
 
   async function addAttraction() {
@@ -23,16 +27,37 @@ const RooteContext = ({ children }) => {
   }
 
   async function addGames() {
-    let res = await axios(`http://13.60.97.160/${language}/culture/`);
-    let { data } = res;
-    // console.log(data, "dadada");
-    setGames(data);
+    let res = await axios(`http://13.60.97.160/${language}/culture/1`);
+    let { cultures } = res.data;
+    // console.log(cultures, "dadada");
+    setGames(cultures);
+  }
+  async function addClothes() {
+    let res = await axios(`http://13.60.97.160/${language}/culture/2`);
+    let { cultures } = res.data;
+    // console.log(cultures, "clothes");
+    setClothes(cultures);
+  }
+  async function addHand() {
+    let res = await axios(`http://13.60.97.160/${language}/culture/3`);
+    let { cultures } = res.data;
+    // console.log(cultures, "Hand");
+    setHand(culture);
+  }
+  async function addInstrumentss() {
+    let res = await axios(`http://13.60.97.160/${language}/culture/5`);
+    let { cultures } = res.data;
+    // console.log(cultures, "instruments");
+    setInstruments(cultures);
   }
 
   useEffect(() => {
     addAttraction();
     addCulture();
     addGames();
+    addClothes();
+    addHand();
+    addInstrumentss();
   }, [language]);
 
   return (
@@ -42,6 +67,12 @@ const RooteContext = ({ children }) => {
         setProducts,
         setBasket,
         setGames,
+        setInstruments,
+        setClothes,
+        clothes,
+        hand,
+        setHand,
+        instruments,
         games,
         basket,
         attraction,

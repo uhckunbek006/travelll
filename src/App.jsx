@@ -98,7 +98,7 @@ function App() {
   ];
 
   return (
-    <div className="app">
+    <div className="App">
       <Header />
       <Routes>
         {route.map((el) => (

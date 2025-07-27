@@ -61,6 +61,30 @@
         line-height: 100%;
         color: #27313882;
       }
+      &__password {
+        display: flex;
+        align-items: center;
+        width: 556px;
+        height: 43px;
+        border-radius: 10px;
+        border: 1px solid #27313882;
+
+        input {
+          width: 95%;
+          height: 100%;
+          padding-left: 15px;
+          font-family: Montserrat;
+          font-weight: 400;
+          font-size: clamp(5px, 2.5vw, 17px);
+          line-height: 100%;
+          color: #27313882;
+          border: none;
+        }
+        span {
+          color: #004a60;
+          font-size: 20px;
+        }
+      }
       &__icon {
         display: flex;
         align-items: center;

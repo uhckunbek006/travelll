@@ -136,7 +136,7 @@
   background: #feffff;
 }
 
-/* Mobile Menu Styles */
+
 .mobile-menu {
   position: absolute;
   top: 100%;
@@ -269,7 +269,8 @@
   top: 100%;
   left: 0;
   width: 100%;
-  background: white;
+  // background: white;
+  background: rgba(255, 255, 255, 0);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform: translateY(-100%);
   opacity: 0;
@@ -347,8 +348,13 @@
   background: #0056b3;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
+  .mobile-menu.active {
+    width: 166px;
+    height: 243px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
   .header--nav,
   .header--btn {
     display: none;
@@ -359,3 +365,5 @@
     color: #000;
   }
 }
+
+

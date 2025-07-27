@@ -1,0 +1,158 @@
+svg {
+  path {
+    &:hover {
+      fill: #000000c5;
+      cursor: pointer;
+    }
+  }
+}
+
+#kyrgyz {
+  padding: 50px 0;
+
+  .kyrgyz {
+    h1 {
+      font-family: Inter;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 100%;
+      margin-bottom: 30px;
+      color: #242424;
+    }
+
+    &--select {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 790px;
+
+      input {
+        width: 330px;
+        height: 46px;
+        border-radius: 9px;
+        border: 1px solid #5a5a5a;
+        color: #5a5a5a;
+        padding-left: 9px;
+      }
+
+      button {
+        width: 95px;
+        height: 46px;
+        border-radius: 10px;
+        border: none;
+        background: #3c5f63;
+        font-size: 19px;
+        color: white;
+      }
+    }
+    &--cart {
+      width: 50px;
+      // svg {
+      //   width: calmp(100px, 10vw, 1100px);
+      // }
+    
+    }
+  }
+}
+
+// #kyrgyz {
+//   padding: 50px 0;
+
+//   .kyrgyz {
+//     h1 {
+//       font-family: Inter;
+//       font-weight: 400;
+//       font-size: 18px;
+//       line-height: 100%;
+//       margin-bottom: 30px;
+//       color: #242424;
+//     }
+
+//     &--select {
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-between;
+//       width: clamp(280px, 790px, 100%);
+//       flex-wrap: wrap;
+//       gap: clamp(10px, 20px, 3vw);
+
+//       input {
+//         width: clamp(150px, 330px, 60vw);
+//         height: clamp(35px, 46px, 6vh);
+//         border-radius: 9px;
+//         border: 1px solid #5a5a5a;
+//         color: #5a5a5a;
+//         padding-left: 9px;
+//         font-size: clamp(12px, 16px, 2vw);
+//       }
+
+//       button {
+//         width: clamp(70px, 95px, 12vw);
+//         height: clamp(35px, 46px, 6vh);
+//         border-radius: 10px;
+//         border: none;
+//         background: #3c5f63;
+//         font-size: clamp(14px, 19px, 2.5vw);
+//         color: white;
+//       }
+//     }
+
+//     &--cart {
+//       position: relative;
+//       width: 80%;
+//       height: clamp(300px, 550px, 80vh);
+
+//       .batken {
+//         width: clamp(90px, 306px, 28vw);
+//         position: absolute;
+//         bottom: clamp(0px, 0px, 0px);
+//       }
+
+//       .osh {
+//         width: clamp(100px, 318px, 29vw);
+//         position: absolute;
+//         bottom: clamp(-8.4px, -25px, -1.5vh);
+//         left: clamp(29.5%, 22%, 24%);
+//       }
+
+//       .jalal {
+//         width: clamp(120px, 445px, 40vw);
+//         position: absolute;
+//         bottom: clamp(50px, 170px, 7.5vh);
+//         left: clamp(11%, 7.5%, 9%);
+//       }
+
+//       .talas {
+//         position: absolute;
+//         width: clamp(120px, 264px, 25vw);
+//         bottom: clamp(5.2%, 41.3%, 21.5%);
+//         left: clamp(16%, 15.5%, 17%);
+//       }
+
+//       .naryn {
+//         position: absolute;
+//         width: clamp(120px, 440px, 35vw);
+//         bottom: clamp(5.2%, 19%, 8%);
+//         left: clamp(59%, 44.4%, 46%);
+//       }
+
+//       .issyk {
+//         width: clamp(130px, 460px, 32vw);
+//         position: absolute;
+//         bottom: clamp(120px, 212px, 22vh);
+//         right: clamp(-16%, -14%, -12%);
+//       }
+
+//       .chui {
+//         width: clamp(120px, 403px, 37vw);
+//         position: absolute;
+//         bottom: clamp(140px, 305px, 32vh);
+//         right: clamp(17%, 18.9%, 21%);
+
+//         &:hover {
+//           animation: imggg 3s infinite ease-in-out;
+//         }
+//       }
+//     }
+//   }
+// }

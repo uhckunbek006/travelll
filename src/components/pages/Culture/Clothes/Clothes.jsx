@@ -1,14 +1,32 @@
 import React, { useContext } from "react";
 import culturePage from "../../../../assets/images/cultureImg.png";
 import { TravelContext } from "../../../context/context";
+const clothesss = {
+  en: {
+    text: `The nomadic way of life is reflected in the Kyrgyz clothes,
+the features of various regions are visible. Natural
+materials prevail: wool, felt, leather, coarse fabrics. The
+design uses ornaments and themes inspired by nature
+and tribal traditions.`,
+    name: "National clothes",
+  },
+  ru: {
+    text: `Кочевой образ жизни отражается в кыргызской одежде, заметны особенности разных регионов. Преобладают натуральные материалы: шерсть, войлок, кожа, грубые ткани. В дизайне используются орнаменты и мотивы, вдохновлённые природой и племенными традициями.
 
+`,
+    name: " Национальная одежда",
+  },
+  ky: {
+    text: `Көчмөн жашоо образы кыргыздардын кийиминде чагылдырылган, ар түрдүү аймактардын өзгөчөлүктөрү байкалып турат. Табигый материалдар басымдуулук кылат: жүн, кийиз, тери, жүндүү кездемелер. Кооздоодо жаратылыштан жана уруу-урук салттарынан алынган орнаменттер менен темалар колдонулат.
+
+`,
+    name: "Улуттук кийимдер",
+  },
+};
 const Clothes = () => {
-  const { culture, games } = useContext(TravelContext);
-  const clothes = games.filter(
-    (el) => el.id === 14 || el.id === 12 || el.id === 13 || el.id === 15
-  );
-  console.log(games);
-
+  const { culture, clothes, language } = useContext(TravelContext);
+  // const clothes = games.find((el) => el.id === 2);
+  const t = clothesss[language];
   return (
     <div id="clothes">
       <div className="container">
@@ -21,22 +39,12 @@ const Clothes = () => {
               backgroundPosition: "center",
             }}
           >
-            <h1>National clothes</h1>
-            <p>
-              The nomadic way of life is reflected in the Kyrgyz clothes, <br />{" "}
-              the features of various regions are visible. Natural <br />{" "}
-              materials prevail: wool, felt, leather, coarse fabrics. The <br />{" "}
-              design uses ornaments and themes inspired by nature <br /> and
-              tribal traditions.
-            </p>
+            <h1>{t.name}</h1>
+            <p>{t.text}</p>
           </div>
           {clothes.map((el) => (
             <div className="clothes--block2">
               <div className="clothes--block2__text">
-                {/* <img
-                  src="https://static.vecteezy.com/system/resources/previews/035/199/224/non_2x/ai-generated-blue-flower-isolated-on-transparent-background-free-png.png"
-                  alt="img"
-                /> */}
                 <img src={el.image} alt="imgg" />
                 <p>
                   <span>{el.culture_name}</span> <br /> <br />

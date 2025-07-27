@@ -9,18 +9,17 @@ import profilePersonn from "../../../../assets/images/culturePage/culture page/p
 import profileBg from "../../../../assets/images/culturePage/culture page/profileBg.png";
 import logout from "../../../../assets/images/culturePage/culture page/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
+import Personn from "../person/Personn";
+import Review from "../review/Review";
 // import Personn from "./person/Personn";
 
 const Profile = () => {
   const nav = useNavigate();
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
 
   return (
     <>
       <div className="a">
-        {active === 1 ? <Personn /> : null}
-        {active === 2 ? <Personn /> : null}
-        {active === 3 ? <Personn /> : null}
         <div
           id="profile"
           style={{
@@ -52,6 +51,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        {active === 1  ? <Personn /> : null}
+        {active === 2 ? <Review /> : null}
+        {active === 3 ? <Personn /> : null}
       </div>
     </>
   );

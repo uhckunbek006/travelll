@@ -5,8 +5,11 @@ import inst from "../../../assets/images/inst.svg";
 import facebook from "../../../assets/images/facebook.svg";
 import vkk from "../../../assets/images/vkk.svg";
 import emaill from "../../../assets/images/emaill.svg";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const nav = useNavigate();
+
   return (
     <footer id="footer">
       <div className="container">
@@ -14,10 +17,43 @@ const Footer = () => {
           <div className="footer--block1">
             <h3>logo</h3>
             <div className="footer--block1__icons">
-              <img src={inst} alt="img" />
-              <img src={facebook} alt="img" />
-              <img src={vkk} alt="img" />
-              <img src={emaill} alt="img" />
+              <img
+                src={inst}
+                alt="img"
+                onClick={() =>
+                  window.open(
+                    "https://www.instagram.com/travelers_kg/",
+                    "_blank"
+                  )
+                }
+              />
+              <img
+                src={facebook}
+                alt="img"
+                onClick={() =>
+                  window.open(
+                    "https://www.facebook.com/travelers.kg/?locale=ru_RU/",
+                    "_blank"
+                  )
+                }
+              />
+              <img
+                src={vkk}
+                alt="img"
+                onClick={() =>
+                  window.open("https://vk.com/travel_kg/", "_blank")
+                }
+              />
+              <img
+                src={emaill}
+                alt="img"
+                onClick={() =>
+                  window.open(
+                    "https://bishkek.adresa-telefony.ru/travelers_kg-109216.html/",
+                    "_blank"
+                  )
+                }
+              />
             </div>
           </div>
           <div className="footer--block2">

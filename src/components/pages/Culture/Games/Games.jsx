@@ -3,8 +3,25 @@ import culturePage from "../../../../assets/images/cultureImg.png";
 import axios from "axios";
 import { TravelContext } from "../../../context/context";
 
+const gamesss = {
+  en: {
+    text: `Since ancient times, the Kyrgyz have given a great place to folk games and entertainment, not a single folk festival took place without them. Traditional equestrian games remain the most beloved and revered.`,
+    name: "Games",
+  },
+  ru: {
+    text: `С древних времён кыргызы придавали большое значение народным играм и развлечениям — ни один народный праздник не обходился без них. Традиционные конные игры остаются самыми любимыми и почитаемыми.`,
+    name: "Игры",
+  },
+  ky: {
+    text: `Эзелтен бери кыргыз эли элдик оюндарга жана көңүл ачууга өзгөчө маани берип келген, андай оюндарсыз эч бир элдик майрам өткөн эмес. Салттуу ат оюндары эң сүймөнчүк жана урмат-сыйга татыктуу бойдон калып келет.`,
+    name: "Оюндар",
+  },
+};
+
 const Games = () => {
-  const { culture, games } = useContext(TravelContext);
+  const { culture, games, language } = useContext(TravelContext);
+
+  const t = gamesss[language];
 
   const gamess = games.filter(
     (el) =>
@@ -24,13 +41,8 @@ const Games = () => {
               backgroundPosition: "center",
             }}
           >
-            <h1>Games</h1>
-            <p>
-              Since ancient times, the Kyrgyz have given a great place to folk
-              games and <br /> entertainment, not a single folk festival took
-              place without them. <br /> Traditional equestrian games remain the
-              most beloved and revered.
-            </p>
+            <h1>{t.name}</h1>
+            <p>{t.text}</p>
           </div>
           {gamess.map((el) => (
             <div className="games--block2">

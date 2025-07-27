@@ -1,4 +1,5 @@
 #currency {
+  padding: 40px 0;
   .currency {
     display: flex;
     align-items: center;
@@ -34,24 +35,21 @@
     }
     &--block2 {
       width: 100%;
-      height: 600px;
+      // height: 600px;
       display: flex;
       align-items: center;
       flex-direction: column;
       &__text {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        gap: 20px;
         width: 100%;
         height: 60%;
-        img {
-          width: 50%;
-          height: 100%;
-          object-fit: contain;
-        }
+
         p {
-          width: 40%;
+          width: 626px;
           font-weight: 400;
-          font-size: clamp(18px, 2.5vw, 20px);
+          font-size: clamp(12px, 2.5vw, 20px);
           line-height: 30px;
           letter-spacing: 0%;
           color: rgba(36, 36, 36, 1);
@@ -66,6 +64,18 @@
             color: rgba(36, 36, 36, 1);
           }
         }
+        &--imgg {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 574px;
+          height: 1359px;
+          padding: 30px 0;
+          img {
+            width: 70%;
+            height: 100%;
+          }
+        }
         @media (max-width: 600px) {
           display: flex;
           flex-direction: column;
@@ -75,6 +85,67 @@
           }
           img {
             width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  #currency {
+    padding: 20px 0;
+
+    .currency {
+      gap: 30px;
+
+      &--block1 {
+        margin: 20px 0;
+        height: auto;
+        flex-direction: column;
+        gap: 20px;
+
+        h1 {
+          font-size: 26px;
+          line-height: 110%;
+          margin-left: 0;
+          text-align: center;
+        }
+
+        p {
+          font-size: 14px;
+          line-height: 22px;
+          text-align: center;
+        }
+      }
+
+      &--block2 {
+        &__text {
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+
+          p {
+            width: 100%;
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+
+            span {
+              display: block;
+              font-size: 18px;
+              margin: 20px 0;
+            }
+          }
+
+          &--imgg {
+            width: 480px;
+            height: auto;
+            padding: 10px 0;
+
+            img {
+              width: 80%;
+              height: auto;
+            }
           }
         }
       }

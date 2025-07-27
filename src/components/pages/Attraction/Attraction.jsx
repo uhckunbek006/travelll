@@ -37,6 +37,24 @@ museum antiquities.`,
 const Attraction = () => {
   const { attraction, language } = useContext(TravelContext);
   const text = bishkekText[language] || bishkekText.en;
+  const attractionn = attraction.filter(
+    (el) =>
+      el.id === 5 ||
+      el.id === 6 ||
+      el.id === 7 ||
+      el.id === 8 ||
+      el.id === 9 ||
+      el.id === 10
+  );
+  console.log(attractionn, "fofo");
+
+  function AddBasket(item) {
+    let res = JSON.parse(localStorage.getItem("basket")) || [];
+    let red = attraction.find((el) => el.id === item);
+
+    let ress = [...res, red];
+    localStorage.setItem("basket", JSON.stringify(ress));
+  }
 
   return (
     <div id="attraction">
@@ -59,9 +77,14 @@ const Attraction = () => {
           <div className="attraction--cards">
             <h1>Attractions</h1>
             <div className="attraction--cards__block">
-              {attraction.slice(0, 6).map((el) => (
+              {attractionn.slice(0, 6).map((el) => (
                 <div className="attraction--cards__block--card">
-                  <img src={like} alt="heart" className="heart" />
+                  <img
+                    src={like}
+                    alt="heart"
+                    className="heart"
+                    onClick={() => AddBasket(el.id)}
+                  />
                   <img src={el.image1} alt={el.title} width={350} />
                   <h2>{el.title}</h2>
                   <div className="attraction--cards__block--card__cirkle">

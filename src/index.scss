@@ -29,9 +29,10 @@ textarea {
   padding-inline: 40px;
 }
 
-.app {
+.App {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
   footer {
     margin-top: auto;
