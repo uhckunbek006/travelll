@@ -4,6 +4,9 @@ import { GoArrowUpRight } from "react-icons/go";
 import { LuSearch } from "react-icons/lu";
 import hotel from "../../../../assets/images/culturePage/culture page/hotel.svg";
 
+const rew = {
+  en: {},
+};
 const Review = () => {
   return (
     <div id="review">
@@ -41,7 +44,6 @@ const Review = () => {
                   <img src={hotel} alt="img" />
                   <div className="review--blocks__hotel--amir__img--text">
                     <h3>Location and contact details</h3>
-                    
                   </div>
                 </div>
               </div>

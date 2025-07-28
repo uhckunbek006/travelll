@@ -4,7 +4,7 @@ import adminbg from "../../../assets/images/adminn.png";
 import { useNavigate } from "react-router-dom";
 import { TravelContext } from "../../context/context";
 import axios from "axios";
-import { MdVisibility, MdVisibilityOff } from "react-icons/md"; // 👈 коштук
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 
 const translations = {
   en: {
@@ -54,8 +54,8 @@ const Logwelcome = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [coPass, setCoPass] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // 👈 коштук
-  const [showCoPassword, setShowCoPassword] = useState(false); // 👈 коштук
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCoPassword, setShowCoPassword] = useState(false);
   const { language } = useContext(TravelContext);
   const t = translations[language];
 
@@ -95,9 +95,7 @@ const Logwelcome = () => {
       nav("/");
     } catch (err) {
       console.error("Login failed", err);
-      alert(
-        nav("/")
-      );
+      alert(nav("/"));
     }
   };
 

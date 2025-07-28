@@ -11,6 +11,7 @@ import logout from "../../../../assets/images/culturePage/culture page/logout.sv
 import { NavLink, useNavigate } from "react-router-dom";
 import Personn from "../person/Personn";
 import Review from "../review/Review";
+import Favorite from "../favorite/Favorite";
 // import Personn from "./person/Personn";
 
 const Profile = () => {
@@ -51,9 +52,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        {active === 1  ? <Personn /> : null}
+        {active === 1 ? <Personn /> : null}
         {active === 2 ? <Review /> : null}
-        {active === 3 ? <Personn /> : null}
+        {active === 3 ? <Favorite /> : null}
       </div>
     </>
   );

@@ -1,6 +1,9 @@
 #header {
   background: #ffffff80;
   position: relative;
+  z-index: 99;
+  position: sticky;
+  top: 0;
 }
 .bg {
   display: flex;
@@ -75,6 +78,7 @@
   font-size: clamp(12px, 4vw, 20px);
   appearance: none;
   cursor: pointer;
+  
 }
 
 .header--btn button {
@@ -135,7 +139,6 @@
 .burger-menu:hover span {
   background: #feffff;
 }
-
 
 .mobile-menu {
   position: absolute;
@@ -365,5 +368,3 @@
     color: #000;
   }
 }
-
-

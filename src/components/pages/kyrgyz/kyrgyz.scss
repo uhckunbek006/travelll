@@ -5,6 +5,12 @@ svg {
       cursor: pointer;
     }
   }
+  text {
+    &:hover {
+      fill: #242424;
+      cursor: pointer;
+    }
+  }
 }
 
 #kyrgyz {
@@ -50,8 +56,50 @@ svg {
       // svg {
       //   width: calmp(100px, 10vw, 1100px);
       // }
-    
     }
+  }
+}
+@media (max-width: 460px) {
+  #kyrgyz {
+    padding: 30px 0;
+
+    .kyrgyz {
+      h1 {
+        font-size: 16px;
+        text-align: center;
+      }
+
+      &--select {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+
+        input {
+          width: 100%;
+          font-size: 14px;
+        }
+
+        button {
+          width: 100%;
+          font-size: 16px;
+        }
+      }
+
+      &--cart {
+        width: 40px;
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  svg path:hover {
+    fill: #000000c5;
+    cursor: pointer;
   }
 }
 

@@ -17,6 +17,13 @@ import Instrument from "./components/pages/Culture/Instruments/instruments";
 import Kitchen from "./components/pages/Culture/Kitchen/kitchen";
 import Gallery from "./components/pages/Gallery/Gallery";
 import Profile from "./components/pages/Admin/profile/Profile";
+import Batken from "./components/pages/Regions/batken/batken";
+import Chui from "./components/pages/Regions/chui/chui";
+import JalalAbad from "./components/pages/Regions/jalalAbad/jalal";
+import Kyl from "./components/pages/Regions/kyl/kyl";
+import Naryn from "./components/pages/Regions/naryn/naryn";
+import Osh from "./components/pages/Regions/osh/osh";
+import Talas from "./components/pages/Regions/talas/talas";
 
 function App() {
   const route = [
@@ -94,6 +101,46 @@ function App() {
       id: 15,
       path: "/profile",
       element: <Profile />,
+    },
+    {
+      id: 16,
+      path: "/regions/batken",
+      element: <Batken />,
+    },
+    {
+      id: 17,
+      path: "/regions/chui",
+      element: <Chui />,
+    },
+    {
+      id: 18,
+      path: "/regions/jalalAbad",
+      element: <JalalAbad />,
+    },
+    {
+      id: 19,
+      path: "/regions/issykKul",
+      element: <Kyl />,
+    },
+    {
+      id: 20,
+      path: "/regions/naryn",
+      element: <Naryn />,
+    },
+    {
+      id: 21,
+      path: "/regions/naryn",
+      element: <Naryn />,
+    },
+    {
+      id: 22,
+      path: "/regions/osh",
+      element: <Osh />,
+    },
+    {
+      id: 23,
+      path: "/regions/talas",
+      element: <Talas />,
     },
   ];
 

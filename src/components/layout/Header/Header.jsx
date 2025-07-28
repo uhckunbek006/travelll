@@ -12,9 +12,9 @@ const translations = {
     regionsList: [
       { value: "chui", label: "Chui" },
       { value: "talas", label: "Talas" },
-      { value: "issyk-kul", label: "Issyk-Kul" },
+      { value: "issykKul", label: "Issyk-Kul" },
       { value: "naryn", label: "Naryn" },
-      { value: "jalal-abad", label: "Jalal-Abad" },
+      { value: "jalalAbad", label: "Jalal-Abad" },
       { value: "osh", label: "Osh" },
       { value: "batken", label: "Batken" },
     ],
@@ -30,9 +30,9 @@ const translations = {
     regionsList: [
       { value: "chui", label: "Чуй" },
       { value: "talas", label: "Талас" },
-      { value: "issyk-kul", label: "Иссык-Куль" },
+      { value: "issykKul", label: "Иссык-Куль" },
       { value: "naryn", label: "Нарын" },
-      { value: "jalal-abad", label: "Джалал-Абад" },
+      { value: "jalalAbad", label: "Джалал-Абад" },
       { value: "osh", label: "Ош" },
       { value: "batken", label: "Баткен" },
     ],
@@ -48,9 +48,9 @@ const translations = {
     regionsList: [
       { value: "chui", label: "Чүй" },
       { value: "talas", label: "Талас" },
-      { value: "issyk-kul", label: "Ысык-Көл" },
+      { value: "issykKul", label: "Ысык-Көл" },
       { value: "naryn", label: "Нарын" },
-      { value: "jalal-abad", label: "Жалал-Абад" },
+      { value: "jalalAbad", label: "Жалал-Абад" },
       { value: "osh", label: "Ош" },
       { value: "batken", label: "Баткен" },
     ],
@@ -64,20 +64,28 @@ const translations = {
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { language, setLanguage } = useContext(TravelContext);
+  const [showRegionsSubmenu, setShowRegionsSubmenu] = useState(false);
+  const { language, setLanguage, setRooteRegion } = useContext(TravelContext);
   const nav = useNavigate();
   const [token, setToken] = useState(null);
 
+  useEffect(() => {
+    const savedToken = JSON.parse(localStorage.getItem("adminlog")) || null;
+    setToken(savedToken);
+  }, []);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    setShowRegionsSubmenu(false);
   };
 
   const t = translations[language] || translations.en;
 
-  useEffect(() => {
-    const savedToken = localStorage.getItem("adminlog");
-    setToken(savedToken);
-  }, []);
+  const handleRegionChange = (regionValue) => {
+    if (!regionValue) return; // бос болсо эч нерсе кылбайбыз
+    setRooteRegion(regionValue);
+    nav(`/regions/${regionValue}`);
+  };
 
   return (
     <div
@@ -95,20 +103,26 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <div className="header--nav">
-              <NavLink to={"/"}>{t.home}</NavLink>
-              <select>
+              <NavLink to="/">{t.home}</NavLink>
+
+              <select
+                onChange={(e) => handleRegionChange(e.target.value)}
+                defaultValue=""
+              >
                 <option value="">{t.regions}</option>
-                {t.regionsList.map((el) => (
-                  <option key={el.value} value={el.value}>
-                    {el.label}
+                {t.regionsList.map((region) => (
+                  <option key={region.value} value={region.value}>
+                    {region.label}
                   </option>
                 ))}
               </select>
-              <NavLink to={"/culture"}>{t.culture}</NavLink>
-              <NavLink to={"/gallery"}>{t.gallery}</NavLink>
-              <NavLink to={"/routes"}>{t.routes}</NavLink>
+
+              <NavLink to="/culture">{t.culture}</NavLink>
+              <NavLink to="/gallery">{t.gallery}</NavLink>
+              <NavLink to="/routes">{t.routes}</NavLink>
             </div>
 
+            {/* Language + Profile or Login */}
             <div className="header--btn">
               <select
                 value={language}
@@ -119,15 +133,18 @@ const Header = () => {
                 <option value="ky">{t.languages.ky}</option>
               </select>
 
-              {!token ? (
-                <button onClick={() => nav("/admin")}>{t.signup}</button>
-              ) : (
+              {token ? (
                 <a onClick={() => nav("/profile")}>
                   <IoPersonCircleSharp />
                 </a>
+              ) : (
+                <button onClick={() => nav("/admin")} className="singupBtn">
+                  {t.signup}
+                </button>
               )}
             </div>
 
+            {/* Mobile burger */}
             <div
               className={`burger-menu ${isMobileMenuOpen ? "active" : ""}`}
               onClick={toggleMobileMenu}
@@ -141,26 +158,40 @@ const Header = () => {
           {/* Mobile Menu */}
           <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
             <div className="mobile-menu--nav">
-              <NavLink to={"/"} onClick={toggleMobileMenu}>
+              <NavLink to="/" onClick={toggleMobileMenu}>
                 {t.home}
               </NavLink>
-              <div className="mobile-select">
-                <select>
-                  <option value="">{t.regions}</option>
+
+              <button
+                className="mobile-submenu-toggle"
+                onClick={() => setShowRegionsSubmenu(!showRegionsSubmenu)}
+              >
+                {t.regions}
+              </button>
+
+              {showRegionsSubmenu && (
+                <div className="mobile-submenu">
                   {t.regionsList.map((region) => (
-                    <option key={region.value} value={region.value}>
+                    <button
+                      key={region.value}
+                      onClick={() => {
+                        handleRegionChange(region.value);
+                        toggleMobileMenu();
+                      }}
+                    >
                       {region.label}
-                    </option>
+                    </button>
                   ))}
-                </select>
-              </div>
-              <NavLink to={"/culture"} onClick={toggleMobileMenu}>
+                </div>
+              )}
+
+              <NavLink to="/culture" onClick={toggleMobileMenu}>
                 {t.culture}
               </NavLink>
-              <NavLink to={"/gallery"} onClick={toggleMobileMenu}>
+              <NavLink to="/gallery" onClick={toggleMobileMenu}>
                 {t.gallery}
               </NavLink>
-              <NavLink to={"/routes"} onClick={toggleMobileMenu}>
+              <NavLink to="/routes" onClick={toggleMobileMenu}>
                 {t.routes}
               </NavLink>
 
@@ -173,26 +204,6 @@ const Header = () => {
                   <option value="ru">{t.languages.ru}</option>
                   <option value="ky">{t.languages.ky}</option>
                 </select>
-
-                {!token ? (
-                  <button
-                    onClick={() => {
-                      nav("/admin");
-                      toggleMobileMenu();
-                    }}
-                  >
-                    {t.signup}
-                  </button>
-                ) : (
-                  <a
-                    onClick={() => {
-                      nav("/profile");
-                      toggleMobileMenu();
-                    }}
-                  >
-                    <IoPersonCircleSharp />
-                  </a>
-                )}
               </div>
             </div>
           </div>

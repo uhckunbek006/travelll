@@ -5,6 +5,7 @@ import welcome from "../../../assets/images/bishkekBg.jpg";
 import { PiArrowUpRightBold } from "react-icons/pi";
 import { RiSearch2Line } from "react-icons/ri";
 import { TravelContext } from "../../context/context";
+import { useNavigate } from "react-router-dom";
 
 const translations = {
   en: {
@@ -21,6 +22,7 @@ Kyrgyzstan is occasionally referred to as "the Switzerland of Central Asia".
 The country is divided into seven provinces, which are Batken,
 Chuy, Jalal-Abad, Issyk-Kul, Naryn, Osh and Talas.`,
     noRegionsFound: "No regions found",
+    searching: "This region does not exist",
   },
   ru: {
     title: "Добро пожаловать в удивительный Кыргызстан!",
@@ -36,6 +38,7 @@ Chuy, Jalal-Abad, Issyk-Kul, Naryn, Osh and Talas.`,
 Страна делится на семь областей: Баткен, Чуй, Джалал-Абад, Иссык-Куль,
 Нарын, Ош и Талас.`,
     noRegionsFound: "Областей не найдено",
+    searching: "Такой области нет",
   },
   ky: {
     title: "Керемет Кыргызстанга кош келиңиз!",
@@ -50,6 +53,7 @@ Chuy, Jalal-Abad, Issyk-Kul, Naryn, Osh and Talas.`,
 "Борбор Азиянын Швейцариясы" деп аталат. Өлкө жети облуска бөлүнөт:
 Баткен, Чүй, Жалал-Абад, Ысык-Көл, Нарын, Ош жана Талас.`,
     noRegionsFound: "Облус табылган жок",
+    searching: "Мындай облус жок",
   },
 };
 
@@ -61,10 +65,11 @@ const Welcome = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredRegions, setFilteredRegions] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // APIдан облустарды алуу (өзүңдүн API url коюңуз)
     axios
-      .get("https://your-api-url.com/api/regions") // Мисалы: "https://myserver.com/api/regions"
+      .get(`http://13.60.97.160/${language}/region/3/`)
       .then((res) => {
         setRegions(res.data);
         setFilteredRegions(res.data);
@@ -74,25 +79,47 @@ const Welcome = () => {
         setRegions([]);
         setFilteredRegions([]);
       });
-  }, []);
-
-  const handleSearch = () => {
-    console.log("Издөө басылды. Текст:", searchTerm);
-  };
+  }, [language]);
 
   useEffect(() => {
     if (!searchTerm.trim()) {
       setFilteredRegions(regions);
     } else {
-      setFilteredRegions(
-        regions.filter((region) =>
-          region[`name_${language}`]
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase())
-        )
-      );
+      // setFilteredRegions(
+      //   regions.filter((region) =>
+      //     region[`name_${language}`]
+      //       .toLowerCase()
+      //       .includes(searchTerm.toLowerCase())
+      //   )
+      // );
     }
   }, [searchTerm, regions, language]);
+
+  const handleSearch = () => {
+    const searchRegions = [
+      "chui",
+      "batken",
+      "osh",
+      "jalalabad",
+      "naryn",
+      "talas",
+      "issykkul",
+    ];
+
+    const formatted = searchTerm.trim().toLowerCase();
+
+    if (searchRegions.includes(formatted)) {
+      navigate(`/regions/${formatted}`);
+    } else {
+      alert(t.searching);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <div
@@ -110,7 +137,7 @@ const Welcome = () => {
             <h1>{t.title}</h1>
             <div className="welcome--nav__inpb">
               <div className="welcome--nav__inpb--input">
-                <a onClick={() => handleSearch()}>
+                <a onClick={handleSearch} style={{ cursor: "pointer" }}>
                   <RiSearch2Line />
                 </a>
                 <input
@@ -118,6 +145,7 @@ const Welcome = () => {
                   placeholder={t.placeholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
 
@@ -135,7 +163,9 @@ const Welcome = () => {
                   <li key={region.id}>{region[`name_${language}`]}</li>
                 ))}
               </ul>
-            ) : null}
+            ) : (
+              <p>{t.noRegionsFound}</p>
+            )}
           </div>
         </div>
 

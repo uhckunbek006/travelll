@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { IoIosArrowRoundForward } from "react-icons/io";
+// import dotBlue from "../../../../assets/images/dotBlue.svg";
 
 const translations = {
   en: {
@@ -62,6 +63,7 @@ const translations = {
     tickets: "5 билет",
   },
 };
+
 const Osh = () => {
   const { language } = useContext(TravelContext);
   const [regions, setRegions] = useState([]);
@@ -76,27 +78,31 @@ const Osh = () => {
     let { data } = res;
     setRegions(data);
   }
+
   async function addMeal() {
     let res = await axios(`http://13.60.97.160/${language}/region/4/meal/`);
     let { data } = res;
+    console.log(data, "setete");
+
     setMeal(data);
   }
 
   let mealres = meal.filter((el) => el.id === 4 || el.id === 5 || el.id === 6);
 
   async function addPlaces() {
-    let res = await axios(`http://13.60.97.160/${language}/region/2/place/`);
+    let res = await axios(`http://13.60.97.160/${language}/region/7/place/`);
     let { data } = res;
     setPlace(data);
   }
 
-  console.log(mealres, "meal");
+  console.log(place, "place ");
 
   useEffect(() => {
     addRegions();
     addMeal();
     addPlaces();
   }, []);
+
   return (
     <div id="osh">
       <div className="container">
@@ -133,7 +139,7 @@ const Osh = () => {
               <img
                 src={kyl}
                 alt="kyl"
-                onClick={() => nav("/regions/issyk-kul")}
+                onClick={() => nav("/regions/issykkul")}
               />
               <h1>{t.kyl}</h1>
             </div>
@@ -141,7 +147,7 @@ const Osh = () => {
               <img
                 src={jalal}
                 alt="jalal"
-                onClick={() => nav("/regions/jalal-abad")}
+                onClick={() => nav("/regions/jalalAbad")}
               />
               <h1>{t.jalal}</h1>
             </div>
@@ -166,6 +172,7 @@ const Osh = () => {
               <h1>{t.batken}</h1>
             </div>
           </div>
+
           <div className="slick">
             <div className="slick__text">
               <h1>What to try in Osh?</h1>
@@ -260,7 +267,14 @@ const Osh = () => {
                   />
                   <div className="places--block__card--text">
                     <h3>{el.place_name}</h3>
-                    <h4>4.5 . . . 23 764 reviews</h4>
+                    <div className="places--block__card--text__dot">
+                      <h4>4.5</h4>
+                      <h5>
+                        {"•".repeat(5)}
+                        <span>◐</span>
+                      </h5>
+                      <h4>23 764 reviews</h4>
+                    </div>
                     <a>
                       <IoIosArrowRoundForward />
                     </a>

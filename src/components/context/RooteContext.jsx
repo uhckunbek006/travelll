@@ -11,6 +11,7 @@ const RooteContext = ({ children }) => {
   const [clothes, setClothes] = useState([]);
   const [hand, setHand] = useState([]);
   const [instruments, setInstruments] = useState([]);
+  const [review, setReview] = useState([]);
   // const [games, setGames] = useState([]);
   const [language, setLanguage] = useState("en");
 
@@ -50,6 +51,14 @@ const RooteContext = ({ children }) => {
     // console.log(cultures, "instruments");
     setInstruments(cultures);
   }
+  async function addReview() {
+    let res = await axios(`http://13.60.97.160/${language}/review_hotel/1 `);
+    let { cultures } = res.data;
+    console.log(res.data[0], "rew");
+
+    console.log(cultures, "review");
+    setReview(cultures);
+  }
 
   useEffect(() => {
     addAttraction();
@@ -58,6 +67,7 @@ const RooteContext = ({ children }) => {
     addClothes();
     addHand();
     addInstrumentss();
+    addReview();
   }, [language]);
 
   return (
