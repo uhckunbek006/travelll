@@ -24,8 +24,12 @@ import Kyl from "./components/pages/Regions/kyl/kyl";
 import Naryn from "./components/pages/Regions/naryn/naryn";
 import Osh from "./components/pages/Regions/osh/osh";
 import Talas from "./components/pages/Regions/talas/talas";
+import { useContext } from "react";
+import { TravelContext } from "./components/context/context";
 
 function App() {
+  const { language } = useContext(TravelContext);
+
   const route = [
     {
       id: 1,
@@ -105,49 +109,49 @@ function App() {
     {
       id: 16,
       path: "/regions/batken",
-      element: <Batken />,
+      element: <Batken key={language} />,
     },
     {
       id: 17,
       path: "/regions/chui",
-      element: <Chui />,
+      element: <Chui key={language} />,
     },
     {
       id: 18,
       path: "/regions/jalalAbad",
-      element: <JalalAbad />,
+      element: <JalalAbad key={language} />,
     },
     {
       id: 19,
       path: "/regions/issykKul",
-      element: <Kyl />,
+      element: <Kyl key={language} />,
     },
     {
       id: 20,
       path: "/regions/naryn",
-      element: <Naryn />,
+      element: <Naryn key={language} />,
     },
     {
       id: 21,
       path: "/regions/naryn",
-      element: <Naryn />,
+      element: <Naryn key={language} />,
     },
     {
       id: 22,
       path: "/regions/osh",
-      element: <Osh />,
+      element: <Osh key={language} />,
     },
     {
       id: 23,
       path: "/regions/talas",
-      element: <Talas />,
+      element: <Talas key={language} />,
     },
   ];
 
   return (
     <div className="App">
       <Header />
-      <Routes>
+      <Routes key={language}>
         {route.map((el) => (
           <Route path={el.path} element={el.element} />
         ))}

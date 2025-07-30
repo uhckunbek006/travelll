@@ -57,6 +57,16 @@ Chuy, Jalal-Abad, Issyk-Kul, Naryn, Osh and Talas.`,
   },
 };
 
+const regionMap = {
+  chui: ["chui", "чуй", "чүй"],
+  batken: ["batken", "баткен"],
+  osh: ["osh", "ош"],
+  jalalabad: ["jalalabad", "джалал-абад", "жалал-абад"],
+  naryn: ["naryn", "нарын"],
+  talas: ["talas", "талас"],
+  issykkul: ["issykkul", "иссык-куль", "ыссык-көл"],
+};
+
 const Welcome = () => {
   const { language } = useContext(TravelContext);
   const t = translations[language] || translations.en;
@@ -85,31 +95,27 @@ const Welcome = () => {
     if (!searchTerm.trim()) {
       setFilteredRegions(regions);
     } else {
-      // setFilteredRegions(
-      //   regions.filter((region) =>
-      //     region[`name_${language}`]
-      //       .toLowerCase()
-      //       .includes(searchTerm.toLowerCase())
-      //   )
-      // );
+      // const filtered = regions.filter((region) => {
+      // const regionName = region[`name_${language}`].toLowerCase();
+      // return regionName.includes(searchTerm.toLowerCase());
+      // });
+      // setFilteredRegions(filtered);
     }
   }, [searchTerm, regions, language]);
 
   const handleSearch = () => {
-    const searchRegions = [
-      "chui",
-      "batken",
-      "osh",
-      "jalalabad",
-      "naryn",
-      "talas",
-      "issykkul",
-    ];
+    const input = searchTerm.trim().toLowerCase().replace(/\s+/g, "");
 
-    const formatted = searchTerm.trim().toLowerCase();
+    let foundKey = null;
+    for (const [key, aliases] of Object.entries(regionMap)) {
+      if (aliases.includes(input)) {
+        foundKey = key;
+        break;
+      }
+    }
 
-    if (searchRegions.includes(formatted)) {
-      navigate(`/regions/${formatted}`);
+    if (foundKey) {
+      navigate(`/regions/${foundKey}`);
     } else {
       alert(t.searching);
     }

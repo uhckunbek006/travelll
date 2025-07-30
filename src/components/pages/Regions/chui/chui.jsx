@@ -94,6 +94,7 @@ const Osh = () => {
   console.log(place, "place");
 
   useEffect(() => {
+    window.scroll(0, 1);
     addRegions();
     addMeal();
     addPlaces();

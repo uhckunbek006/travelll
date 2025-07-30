@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import header from "../../../assets/images/header.svg";
 import "./Header.scss";
 import { TravelContext } from "../../context/context";
@@ -12,9 +12,9 @@ const translations = {
     regionsList: [
       { value: "chui", label: "Chui" },
       { value: "talas", label: "Talas" },
-      { value: "issykKul", label: "Issyk-Kul" },
+      { value: "issyk-kul", label: "Issyk-Kul" },
       { value: "naryn", label: "Naryn" },
-      { value: "jalalAbad", label: "Jalal-Abad" },
+      { value: "jalal-abad", label: "Jalal-Abad" },
       { value: "osh", label: "Osh" },
       { value: "batken", label: "Batken" },
     ],
@@ -30,9 +30,9 @@ const translations = {
     regionsList: [
       { value: "chui", label: "Чуй" },
       { value: "talas", label: "Талас" },
-      { value: "issykKul", label: "Иссык-Куль" },
+      { value: "issyk-kul", label: "Иссык-Куль" },
       { value: "naryn", label: "Нарын" },
-      { value: "jalalAbad", label: "Джалал-Абад" },
+      { value: "jalal-abad", label: "Джалал-Абад" },
       { value: "osh", label: "Ош" },
       { value: "batken", label: "Баткен" },
     ],
@@ -48,9 +48,9 @@ const translations = {
     regionsList: [
       { value: "chui", label: "Чүй" },
       { value: "talas", label: "Талас" },
-      { value: "issykKul", label: "Ысык-Көл" },
+      { value: "issyk-kul", label: "Ысык-Көл" },
       { value: "naryn", label: "Нарын" },
-      { value: "jalalAbad", label: "Жалал-Абад" },
+      { value: "jalal-abad", label: "Жалал-Абад" },
       { value: "osh", label: "Ош" },
       { value: "batken", label: "Баткен" },
     ],
@@ -65,9 +65,16 @@ const translations = {
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showRegionsSubmenu, setShowRegionsSubmenu] = useState(false);
+  const [token, setToken] = useState(null);
+
   const { language, setLanguage, setRooteRegion } = useContext(TravelContext);
   const nav = useNavigate();
-  const [token, setToken] = useState(null);
+  const location = useLocation();
+
+  const currentPath = location.pathname;
+  const currentRegion = currentPath.startsWith("/regions/")
+    ? currentPath.split("/")[2]
+    : "";
 
   useEffect(() => {
     const savedToken = JSON.parse(localStorage.getItem("adminlog")) || null;
@@ -82,8 +89,8 @@ const Header = () => {
   const t = translations[language] || translations.en;
 
   const handleRegionChange = (regionValue) => {
-    if (!regionValue) return; // бос болсо эч нерсе кылбайбыз
-    setRooteRegion(regionValue);
+    if (!regionValue) return;
+    // setRooteRegion(regionValue);
     nav(`/regions/${regionValue}`);
   };
 
@@ -101,13 +108,12 @@ const Header = () => {
           <div className="header">
             <h1 className="logo"></h1>
 
-            {/* Desktop Navigation */}
             <div className="header--nav">
               <NavLink to="/">{t.home}</NavLink>
 
               <select
+                value={currentRegion}
                 onChange={(e) => handleRegionChange(e.target.value)}
-                defaultValue=""
               >
                 <option value="">{t.regions}</option>
                 {t.regionsList.map((region) => (
@@ -122,14 +128,13 @@ const Header = () => {
               <NavLink to="/routes">{t.routes}</NavLink>
             </div>
 
-            {/* Language + Profile or Login */}
             <div className="header--btn">
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
               >
                 <option value="en">{t.languages.en}</option>
-                <option value="ru">{t.languages.ru}</option>
+
                 <option value="ky">{t.languages.ky}</option>
               </select>
 
@@ -144,7 +149,6 @@ const Header = () => {
               )}
             </div>
 
-            {/* Mobile burger */}
             <div
               className={`burger-menu ${isMobileMenuOpen ? "active" : ""}`}
               onClick={toggleMobileMenu}
@@ -155,7 +159,6 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Menu */}
           <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
             <div className="mobile-menu--nav">
               <NavLink to="/" onClick={toggleMobileMenu}>

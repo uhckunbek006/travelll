@@ -94,6 +94,7 @@ const Osh = () => {
   console.log(place, "place");
 
   useEffect(() => {
+    window.scroll(0, 1);
     addRegions();
     addMeal();
     addPlaces();
@@ -206,7 +207,11 @@ const Osh = () => {
             <div className="places--block">
               {place.map((el) => (
                 <div className="places--block__card">
-                  <img src={el.place_image} alt="" onClick={() => nav(`/detail/${el.id}`)}/>
+                  <img
+                    src={el.place_image}
+                    alt=""
+                    onClick={() => nav(`/detail/${el.id}`)}
+                  />
                   <div className="places--block__card--text">
                     <h3>{el.place_name}</h3>
                     <h4>4.5 . . . 23 764 reviews</h4>

@@ -12,6 +12,7 @@ const RooteContext = ({ children }) => {
   const [hand, setHand] = useState([]);
   const [instruments, setInstruments] = useState([]);
   const [review, setReview] = useState([]);
+  const [gallery, setGallery] = useState([]);
   // const [games, setGames] = useState([]);
   const [language, setLanguage] = useState("en");
 
@@ -56,10 +57,18 @@ const RooteContext = ({ children }) => {
     let { cultures } = res.data;
     console.log(res.data[0], "rew");
 
-    console.log(cultures, "review");
+    // console.log(cultures, "review");
     setReview(cultures);
   }
+  async function getGallery() {
+    let res = await axios(`http://13.60.97.160/${language}/gallery/ `);
+    // let { cultures } = res.data;
+    console.log(res.data, "gallerysetdata");
 
+    setGallery(res.data);
+  }
+
+  
   useEffect(() => {
     addAttraction();
     addCulture();
@@ -68,6 +77,7 @@ const RooteContext = ({ children }) => {
     addHand();
     addInstrumentss();
     addReview();
+    getGallery();
   }, [language]);
 
   return (
@@ -79,9 +89,11 @@ const RooteContext = ({ children }) => {
         setGames,
         setInstruments,
         setClothes,
+        setHand,
+        setGallery,
+        gallery,
         clothes,
         hand,
-        setHand,
         instruments,
         games,
         basket,

@@ -161,6 +161,20 @@
         border: 1px solid #27313882;
         padding-left: 15px;
       }
+      &__pass {
+        width: 556px;
+        height: 43px;
+        border-radius: 10px;
+        border: 1px solid #27313882;
+        input {
+          width: 95%;
+          height: 100%;
+          border-radius: 10px;
+          border: 1px solid #27313882;
+          padding-left: 15px;
+          border: none;
+        }
+      }
       &__inpname {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -182,7 +196,7 @@
           border: 1px solid #27313882;
           padding-left: 15px;
         }
-        &--inp {  
+        &--inp {
           &__bl {
             width: clamp(113px, 24vw, 260px);
             height: clamp(12px, 5.5vw, 43px);
