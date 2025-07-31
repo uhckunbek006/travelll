@@ -13,6 +13,7 @@ const RooteContext = ({ children }) => {
   const [instruments, setInstruments] = useState([]);
   const [review, setReview] = useState([]);
   const [gallery, setGallery] = useState([]);
+  const [routes, setRoutes] = useState([]);
   // const [games, setGames] = useState([]);
   const [language, setLanguage] = useState("en");
 
@@ -55,20 +56,24 @@ const RooteContext = ({ children }) => {
   async function addReview() {
     let res = await axios(`http://13.60.97.160/${language}/review_hotel/1 `);
     let { cultures } = res.data;
-    console.log(res.data[0], "rew");
-
+    // console.log(res.data[0], "rew");
     // console.log(cultures, "review");
     setReview(cultures);
   }
   async function getGallery() {
     let res = await axios(`http://13.60.97.160/${language}/gallery/ `);
     // let { cultures } = res.data;
-    console.log(res.data, "gallerysetdata");
-
+    // console.log(res.data, "gallerysetdata");
     setGallery(res.data);
   }
+  // async function getRoutes() {
+  //   let res = await axios(`http://13.60.97.160/${language}/distance/ `);
+  //   // let { cultures } = res.data;
+  //   console.log(res.data, "routerr  ");
 
-  
+  //   setRoutes(res.data);
+  // }
+
   useEffect(() => {
     addAttraction();
     addCulture();
@@ -78,6 +83,7 @@ const RooteContext = ({ children }) => {
     addInstrumentss();
     addReview();
     getGallery();
+    // getRoutes();
   }, [language]);
 
   return (

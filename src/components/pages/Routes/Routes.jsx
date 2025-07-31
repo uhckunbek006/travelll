@@ -15,7 +15,7 @@ import routeImg4 from "../../../assets/images/routeImg4.svg";
 import routeImg5 from "../../../assets/images/routeImg5.svg";
 import map from "../../../assets/images/map.png";
 import { TravelContext } from "../../context/context";
-
+import axios from "axios";
 
 const translations = {
   en: {
@@ -69,14 +69,21 @@ const Routess = () => {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const {language} = useContext(TravelContext)
+  const { language } = useContext(TravelContext);
 
   const t = translations[language];
 
-  function addGo() {
+  async function addGo() {
     if (!name.trim() || !phone.trim()) {
       alert(404);
     } else {
+      let ress = [name, phone];
+      let res = await axios.post(
+        `http://13.60.97.160/${language}/distance/`,
+        ress
+      );
+      console.log(res);
+
       setModal(true);
       setName("");
       setPhone("");
@@ -105,7 +112,6 @@ const Routess = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-
           <div className="route--block__input">
             <input
               type="text"

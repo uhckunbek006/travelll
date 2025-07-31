@@ -17,6 +17,7 @@ const Favorite = () => {
     localStorage.setItem("basket", JSON.stringify(ress));
   }
 
+
   // const favorite = [
   //   {
   //     id: 1,
@@ -101,34 +102,44 @@ const Favorite = () => {
             </div>
           </div>
           <h5>Favorites</h5>
-          <div className="favorite--blocks">
-            {favorite.map((el) => (
-              <div className="favorite--blocks__block" key={el.id}>
-                <img src={el.place_image} alt="img" />
-                <h1>{el.place_name}</h1>
-                <div className="favorite--blocks__block--rate">
-                  <h3>{el.avg_rating}</h3>
-                  <h4>{el.count_reviews}</h4>
-                </div>
-                <div className="favorite--blocks__block--cout">
-                  <a>
-                    <BsFillGeoAltFill />
-                  </a>
 
-                  <h2>{el.region.region_name}</h2>
+          {favorite.length ? (
+            <div className="favorite--blocks">
+              {favorite?.map((el) => (
+                <div className="favorite--blocks__block" key={el.id}>
+                  <img src={el.place_image} alt="img" />
+                  <h1>{el.place_name}</h1>
+                  <div className="favorite--blocks__block--rate">
+                    <h3>{el.avg_rating}</h3>
+                    <h4>{el.count_reviews}</h4>
+                  </div>
+                  <div className="favorite--blocks__block--cout">
+                    <a>
+                      <BsFillGeoAltFill />
+                    </a>
+
+                    <h2>{el.region.region_name}</h2>
+                  </div>
+                  <p onClick={() => productDelet(el)}>
+                    {favorite.length ? (
+                      <IoHeartCircleSharp />
+                    ) : (
+                      <h6>
+                        <FaHeart style={{ color: "red" }} />
+                      </h6>
+                    )}
+                  </p>
                 </div>
-                <p onClick={() => productDelet(el)}>
-                  {favorite.length ? (
-                    <IoHeartCircleSharp />
-                  ) : (
-                    <h6>
-                      <FaHeart />
-                    </h6>
-                  )}
-                </p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="basketr">
+              <img
+                src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-10929686-8779492.png"
+                alt="img"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

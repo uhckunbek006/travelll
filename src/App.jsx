@@ -26,6 +26,7 @@ import Osh from "./components/pages/Regions/osh/osh";
 import Talas from "./components/pages/Regions/talas/talas";
 import { useContext } from "react";
 import { TravelContext } from "./components/context/context";
+import Detail from "./components/pages/detail/Detail";
 
 function App() {
   const { language } = useContext(TravelContext);
@@ -145,6 +146,11 @@ function App() {
       id: 23,
       path: "/regions/talas",
       element: <Talas key={language} />,
+    },
+    {
+      id: 24,
+      path: "/detail/:placeId",
+      element: <Detail />,
     },
   ];
 

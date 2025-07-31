@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { IoIosArrowRoundForward } from "react-icons/io";
-// import dotBlue from "../../../../assets/images/dotBlue.svg";
+import dotBlue from "../../../../assets/images/dotBlue.svg";
 
 const translations = {
   en: {
@@ -78,12 +78,9 @@ const Osh = () => {
     let { data } = res;
     setRegions(data);
   }
-
   async function addMeal() {
     let res = await axios(`http://13.60.97.160/${language}/region/4/meal/`);
     let { data } = res;
-    console.log(data, "setete");
-
     setMeal(data);
   }
 
@@ -98,7 +95,6 @@ const Osh = () => {
   console.log(place, "place ");
 
   useEffect(() => {
-    window.scroll(0, 1  );
     addRegions();
     addMeal();
     addPlaces();
@@ -140,7 +136,7 @@ const Osh = () => {
               <img
                 src={kyl}
                 alt="kyl"
-                onClick={() => nav("/regions/issykkul")}
+                onClick={() => nav("/regions/issyk-kul")}
               />
               <h1>{t.kyl}</h1>
             </div>
@@ -148,7 +144,7 @@ const Osh = () => {
               <img
                 src={jalal}
                 alt="jalal"
-                onClick={() => nav("/regions/jalalAbad")}
+                onClick={() => nav("/regions/jalal-abad")}
               />
               <h1>{t.jalal}</h1>
             </div>

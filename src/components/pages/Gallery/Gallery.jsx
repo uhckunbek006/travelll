@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Gallery.scss";
 import { BsFillGeoAltFill } from "react-icons/bs";
 import { IoIosHeart } from "react-icons/io";
@@ -68,21 +68,28 @@ const Gallery = () => {
 
   const nav = useNavigate();
 
+  let favorite = JSON.parse(localStorage.getItem("basket")) || [];
+
   const { gallery } = useContext(TravelContext);
 
-  function prover() {
-    let res = JSON.parse(localStorage.getItem("setdata")) || [];
-    console.log(res);
+  // function prover() {
+  //   let res = JSON.parse(localStorage.getItem("setdata")) || [];
+  //   console.log(res);
 
-    !res.access.length ? alert(444) : nav("/admin");
-  }
+  //   !res.access.length ? alert(444) : nav("/admin");
+  // }
 
   function AddBasket(item) {
-    let res = JSON.parse(localStorage.getItem("basket")) || [];
-    let red = gallery.find((el) => el.id === item);
-
-    let ress = [...res, red];
-    localStorage.setItem("basket", JSON.stringify(ress));
+    let ress = JSON.parse(localStorage.getItem("adminlog")) || [];
+    console.log(ress, "galdsdsdsdslee");
+    if (ress) {
+      let res = JSON.parse(localStorage.getItem("basket")) || [];
+      let red = gallery.find((el) => el.id === item);
+      let ress = [...res, red];
+      localStorage.setItem("basket", JSON.stringify(ress));
+    } else {
+      nav("/admin");
+    }
   }
 
   return (
@@ -103,9 +110,19 @@ const Gallery = () => {
                 </a>
                 <h2>{el.region.region_name}</h2>
               </div>
-              <p onClick={() => AddBasket(el.id)}>
-                <IoHeartCircleSharp />
-              </p>
+              { favorite ? (
+                <p onClick={() => AddBasket(el.id)}>
+                  <IoHeartCircleSharp />
+                </p>
+              ) : (
+                <h6>
+                  <FaHeart
+                    style={{
+                      color: "red",
+                    }}
+                  />
+                </h6>
+              )}
             </div>
           ))}
         </div>

@@ -18,6 +18,11 @@ const Profile = () => {
   const nav = useNavigate();
   const [active, setActive] = useState(1);
 
+  function logout() {
+    localStorage.removeItem("adminlog");
+    nav("/");
+  }
+
   return (
     <>
       <div className="a">
@@ -44,7 +49,7 @@ const Profile = () => {
                     <NavLink onClick={() => setActive(3)}>Favorites</NavLink>
                   </div>
                 </div>
-                <div className="profile--log" onClick={() => nav("/")}>
+                <div className="profile--log" onClick={() => logout()}>
                   <img src={logout} alt="" />
                   <h1>Log out</h1>
                 </div>

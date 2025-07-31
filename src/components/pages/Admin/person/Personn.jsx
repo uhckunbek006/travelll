@@ -84,7 +84,6 @@ const Personn = () => {
     <div id="personn">
       <div className="container">
         <div className="personn">
-          {/* TOP SEARCH BAR */}
           <div className="personn--top">
             <div className="personn--top__input">
               <div className="personn--top__input--inp">
@@ -109,7 +108,7 @@ const Personn = () => {
             </div>
           </div>
 
-          {/* BANNER */}
+         
           <div
             className="personn--personal"
             style={{ background: `url(${logobgper}) no-repeat center/cover` }}
@@ -124,14 +123,14 @@ const Personn = () => {
               </div>
             </div>
             <div className="personn--personal__right">
-              <h4>{t.editCover}</h4>
-              <h3>
+              {/* <h4>{t.editCover}</h4> */}
+              {/* <h3>
                 <RxPencil2 />
-              </h3>
+              </h3> */}
             </div>
           </div>
 
-          {/* INPUT FIELDS */}
+      
           <div className="personn--inputs">
             <h1>{t.personalInfo}</h1>
 
@@ -168,14 +167,14 @@ const Personn = () => {
               </span>
             </div>
 
-            {/* Name / Surname / Phone / Date */}
+         
             <div className="personn--inputs__inpname">
               <div className="personn--inputs__inpname--inp">
                 <h2>{t.name}</h2>
                 <input
                   type="text"
                   placeholder={t.name}
-                  value={name}
+                  value={surname}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
@@ -185,7 +184,7 @@ const Personn = () => {
                 <input
                   type="text"
                   placeholder={t.surname}
-                  value={surname}
+                  value={name}
                   onChange={(e) => setSurname(e.target.value)}
                 />
               </div>
